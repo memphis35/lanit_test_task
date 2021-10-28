@@ -61,6 +61,7 @@ public class GeneralRepositoryImpl implements GeneralRepository {
         final long cars = carRepository.count();
         final long vendors = carRepository.findAllModels().stream()
                 .map(model -> model.split("-")[0].toLowerCase())
+                .distinct()
                 .count();
         return new Statistics(persons, cars, vendors);
     }
